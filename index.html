@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razas - Quiz de Perros y Gatos</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <div class="container">
+        <!-- PANTALLA DE INICIO -->
+        <main id="screen-start" class="card active">
+            <header class="start-header">
+                <div class="logo-badge">🐾</div>
+                <h1>Razas</h1>
+                <p class="subtitle">Pon a prueba tu conocimiento identificando las razas de perros y gatos de nuestro catálogo clínico.</p>
+            </header>
+
+            <section class="settings-section">
+                <div class="setting-group">
+                    <label>Selecciona la Categoría</label>
+                    <div class="radio-cards">
+                        <label class="radio-card">
+                            <input type="radio" name="category" value="both" checked>
+                            <span class="card-content">
+                                <span class="card-icon">🐕🐈</span>
+                                <span class="card-title">Todos</span>
+                                <span class="card-desc">Perros y Gatos</span>
+                            </span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="category" value="dog">
+                            <span class="card-content">
+                                <span class="card-icon">🐕</span>
+                                <span class="card-title">Perros</span>
+                                <span class="card-desc">Solo Caninos</span>
+                            </span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="category" value="cat">
+                            <span class="card-content">
+                                <span class="card-icon">🐈</span>
+                                <span class="card-title">Gatos</span>
+                                <span class="card-desc">Solo Felinos</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label>Cantidad de Preguntas</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn active" data-value="10">10</button>
+                        <button class="segment-btn" data-value="20">20</button>
+                        <button class="segment-btn" data-value="50">50</button>
+                        <button class="segment-btn" data-value="all">Todas</button>
+                    </div>
+                </div>
+            </section>
+
+            <button id="btn-start" class="btn btn-primary">Iniciar Quiz</button>
+        </main>
+
+        <!-- PANTALLA DE JUEGO -->
+        <main id="screen-quiz" class="card">
+            <header class="quiz-header">
+                <div class="quiz-meta">
+                    <span id="quiz-question-counter">Pregunta 1 de 10</span>
+                    <span id="quiz-score-counter">Aciertos: 0</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="quiz-progress-bar" class="progress-bar" style="width: 10%;"></div>
+                </div>
+            </header>
+
+            <section class="question-section">
+                <div class="image-wrapper">
+                    <img id="animal-image" src="" alt="Identifica la raza">
+                    <div class="image-loader">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                
+                <div class="options-grid" id="options-container">
+                    <!-- Los botones se generarán dinámicamente -->
+                </div>
+            </section>
+
+            <footer class="quiz-footer">
+                <button id="btn-next" class="btn btn-secondary" disabled>Siguiente</button>
+            </footer>
+        </main>
+
+        <!-- PANTALLA DE RESULTADOS -->
+        <main id="screen-results" class="card">
+            <header class="results-header">
+                <div class="result-trophy">🏆</div>
+                <h1>Resultados</h1>
+                
+                <div class="score-circle-container">
+                    <svg class="score-circle" viewBox="0 0 100 100">
+                        <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+                        <circle id="score-circle-fill" class="circle-fill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+                    </svg>
+                    <div class="score-text">
+                        <span id="score-percent">0%</span>
+                        <span id="score-fraction" class="fraction">0 / 0</span>
+                    </div>
+                </div>
+
+                <h2 id="feedback-title">¡Buen intento!</h2>
+                <p id="feedback-text">Sigue practicando para convertirte en un experto en razas.</p>
+            </header>
+
+            <!-- Historial de revisión -->
+            <section class="review-section">
+                <h3>Revisión de Respuestas</h3>
+                <div id="review-list" class="review-list">
+                    <!-- Se generará dinámicamente -->
+                </div>
+            </section>
+
+            <footer class="results-footer">
+                <button id="btn-restart" class="btn btn-primary">Jugar de Nuevo</button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Cargar breeds.js primero, luego la lógica del juego -->
+    <script src="breeds.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
